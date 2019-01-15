@@ -47,6 +47,13 @@ SELECT COUNT (AlbumId),AlbumId
 FROM Song
 GROUP BY AlbumId
 
+-- kimmy's solution:
+
+select a.title, count() as "total songs"
+from album a
+join song s on s.albumid = a.albumid
+group by s.albumid; 
+
 -- ============================================================
 
 -- 7. Write a SELECT statement to display how many songs exist for each artist. You'll need to use the COUNT() function and the GROUP BY keyword sequence.
@@ -55,12 +62,26 @@ SELECT COUNT (ArtistId),ArtistId
 FROM Song
 GROUP BY ArtistId
 
+-- adding in the artist name:
+
+SELECT ar.artistName as "Artist Name", count() as "total songs"
+from Song s
+join artist ar on ar.ArtistId = s.ArtistId
+group by s.ArtistId
+
 -- ============================================================
 -- 8. Write a SELECT statement to display how many songs exist for each genre. You'll need to use the COUNT() function and the GROUP BY keyword sequence.
 
 SELECT COUNT (GenreId),GenreId
 FROM Song
 GROUP BY GenreId
+
+-- adding in genre name
+
+SELECT label as "Genre Label", COUNT() as "Total Songs"
+from Song s
+join genre g on g.GenreId = s.GenreId
+group by s.GenreId
 
 -- =============================================================
 
